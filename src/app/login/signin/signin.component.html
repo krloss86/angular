@@ -1,0 +1,95 @@
+<div class="row">
+    <div class="col-6">
+        <form #formulario='ngForm' (ngSubmit)="submitForm(formulario)">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" ngModel required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password" ngModel required>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="tc" id="tc" ngModel required>
+                    <label class="form-check-label" for="tc">
+                        Agree to terms and conditions
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-block" [ngClass]="{'btn-success': formulario.valid, 'btn-primary': !formulario.valid}" [disabled]="!formulario.valid">Submit</button>
+            <button type="reset" class="btn btn-primary btn-block" [disabled]="!formulario.submitted">Reset</button>
+        </form>
+    </div>
+    <div class="col-6">
+        <b>Informacion del Formulario</b>
+        <ul>
+            <li>
+                values:  {{formulario.value | json}}    
+            </li>        
+            <li>
+                valid: <span [ngClass]="{'alert-success' : formulario.valid, 'alert-danger' : !formulario.valid}">{{formulario.valid}} </span>
+            </li>
+            <li>
+                submited: {{formulario.submitted}}    
+            </li>
+            <li>
+                pristine: {{formulario.pristine}}
+            </li>
+            <li>
+                disty: {{formulario.dirty}}
+            </li>
+            <li>
+                touched: {{formulario.touched}}
+            </li>
+        </ul>
+    </div>
+</div>
+<hr class="">
+<div class="row">
+    <div class="col-6">
+        <form #formulario1='ngForm' (ngSubmit)="submitForm()">
+            <label for="exampleInputEmail11">Email address</label>
+                <div class="form-group">
+                <input type="email" class="form-control" id="exampleInputEmail11" aria-describedby="emailHelp" name="email" [(ngModel)]="loginModel.email" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword11">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword11" name="password" [(ngModel)]="loginModel.password" required>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="tc1" name="tc" [(ngModel)]="loginModel.tc" required>
+                    <label class="form-check-label" for="tc1">
+                        Agree to terms and conditions
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-block" [ngClass]="{'btn-success': formulario1.valid, 'btn-primary': !formulario1.valid}" [disabled]="!formulario1.valid">Submit</button>
+            <button type="reset" class="btn btn-primary btn-block" [disabled]="!formulario1.submitted">Reset</button>
+        </form>
+    </div>
+    <div class="col-6">
+        <b>Informacion del Formulario</b>
+        <ul>
+            <li>
+                values:  {{formulario1.value | json}}    
+            </li>        
+            <li>
+                valid: <span [ngClass]="{'alert-success' : formulario1.valid, 'alert-danger' : !formulario1.valid}">{{formulario1.valid}} </span>
+            </li>
+            <li>
+                submited: {{formulario1.submitted}}    
+            </li>
+            <li>
+                pristine: {{formulario1.pristine}}
+            </li>
+            <li>
+                disty: {{formulario1.dirty}}
+            </li>
+            <li>
+                touched: {{formulario1.touched}}
+            </li>
+        </ul>
+    </div>
+</div>
