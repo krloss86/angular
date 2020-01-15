@@ -12,29 +12,20 @@
                                 <div class="list-group ">
                                     <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
                                     <a href="#" class="list-group-item list-group-item-action">User Management</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Used</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Enquiry</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Dealer</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Media</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Post</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Category</a>
-                                    <a href="#" class="list-group-item list-group-item-action">New</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Comments</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Appearance</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Reports</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Settings</a>
+                                    <a href="#" class="list-group-item list-group-item-action" (click)="logout()">Logout</a>
                                   </div> 
                             </div>                            
                             <div class="col-lg-9">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Datos de Perfil</h1>
+                                        <alert></alert>
                                     </div>
-                                    <form>
+                                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                                         <div class="form-group row">
                                             <label for="username" class="col-4 col-form-label">User Name*</label> 
                                             <div class="col-8">
-                                            <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                                                <input id="username" formControlName="username" placeholder="Username" class="form-control here" type="text">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -89,7 +80,7 @@
                                         </div> 
                                         <div class="form-group row">
                                             <div class="offset-4 col-8">
-                                            <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                            <button [disabled]="!profileForm.valid"class="btn btn-primary">Update My Profile</button>
                                             </div>
                                         </div>
                                     </form>

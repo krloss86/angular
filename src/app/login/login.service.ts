@@ -12,12 +12,17 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { }
 
   login(username: string, password: string): any {
-    this.httpClient.get(
-      this.loginEndPoint).subscribe(data => console.log(data.toString())
+    this.httpClient
+      .get(this.loginEndPoint)
+      .subscribe(data => console.log(data.toString())
     );
   }
 
-  /*login(email: string, password: string): Observable<any> {
+  _login(email: string, password: string): Observable<any> {
     return this.httpClient.get(this.loginEndPoint);
-  }*/
+  }
+
+  logout(): void {
+    console.log('LoginService: logout()');
+  }
 }

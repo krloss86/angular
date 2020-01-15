@@ -2,6 +2,7 @@ import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -9,19 +10,21 @@ import { LoginService } from '../login.service';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-
+  title = 'Bienvenido';
   loginForm: FormGroup;
+  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService) {
+    private loginService: LoginService,
+    private router: Router) {
       this.createForm();
   }
 
   createForm(): void {
     this.loginForm = this.formBuilder.group({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)])
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]]
     });
   }
 
@@ -29,6 +32,7 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
 
     if (!this.loginForm.valid) {
       return;
@@ -39,12 +43,17 @@ export class SigninComponent implements OnInit {
 
     const password = this.loginForm.get('password').value;
 
-    const respuesta = this.loginService.login(username, password);
-
-    console.log(respuesta);
+    this.loginService._login(username, password).subscribe(
+      data => {
+        console.log(data);
+        console.log('direccioando');
+        this.router.navigate(['/profile']);
+      }
+    );
   }
 
   // convenience getter for easy access to form fields
-  // get f() { return this.loginForm.controls; }
+  get username() { return this.loginForm.get('username'); }
+  get password() { return this.loginForm.get('password'); }
 
 }

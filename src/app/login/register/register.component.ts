@@ -9,7 +9,7 @@ import { LoginService } from '../login.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  title = 'Registro de Usuario';
   registerForm: FormGroup;
   loading = false;
   submitted = false;
