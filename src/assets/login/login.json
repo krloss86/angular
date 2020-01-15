@@ -1,0 +1,29 @@
+{
+    "username": "educacionit",
+    "cursoActual": {
+        "nombre": "angular",
+        "dia": "sabado",
+        "turno": "mañana",
+        "horario": "10-14",
+        "fechaInicio": "2020/01/01",
+        "fechaFin": "2020/15/01"
+    },
+    "otrosCursos": [
+        {
+            "nombre": "java para no programadores",
+            "dia": "lunes",
+            "turno": "noche",
+            "horario": "19-22",
+            "fechaInicio": "2020/01/01",
+            "fechaFin": "2020/15/01"
+        },
+        {
+            "nombre": "java para no programadores",
+            "dia": "lunes",
+            "turno": "noche",
+            "horario": "19-22",
+            "fechaInicio": "2020/01/01",
+            "fechaFin": "2020/15/01"
+        }
+    ]
+}
