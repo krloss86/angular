@@ -34,7 +34,7 @@ public class ProfileService {
 		
 		Profile updateProfile = currentProfile;
 		
-		updateProfile.setUsername(newProfile.getUsername());
+		updateProfile.setUserName(newProfile.getUserName());
 		
 		updateProfile.setCurso(newProfile.getCurso());
 

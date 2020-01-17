@@ -2,7 +2,7 @@ package ar.com.educacionit.domain;
 
 public class LoginData {
 
-	private String username;
+	private String userName;
 	
 	private String password;
 
@@ -10,18 +10,18 @@ public class LoginData {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public LoginData(String username, String password) {
+	public LoginData(String userName, String password) {
 		super();
-		this.username = username;
+		this.userName = userName;
 		this.password = password;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {

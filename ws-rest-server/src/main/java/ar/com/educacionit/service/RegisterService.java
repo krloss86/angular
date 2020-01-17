@@ -26,7 +26,7 @@ public class RegisterService {
 		
 		profile.setLastName(registerData.getLastName());
 		
-		profile.setUsername(registerData.getUserName());
+		profile.setUserName(registerData.getUserName());
 		
 		return Response.status(Status.OK).entity(profile).build();
 	}

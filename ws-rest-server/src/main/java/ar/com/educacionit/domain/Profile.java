@@ -6,7 +6,7 @@ package ar.com.educacionit.domain;
  */
 public class Profile {
 
-	private String username;
+	private String userName;
 	
 	private String lastName;
 	
@@ -16,19 +16,19 @@ public class Profile {
 		
 	}
 	
-	public Profile(String username, String lastName, Curso curso) {
+	public Profile(String userName, String lastName, Curso curso) {
 		super();
-		this.username = username;
+		this.userName = userName;
 		this.lastName = lastName;
 		this.curso = curso;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public Curso getCurso() {

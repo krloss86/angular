@@ -22,7 +22,7 @@ public class LoginService {
 		
 		Profile profile = ProfileDAO.profile;
 		
-		profile.setUsername(login.getUsername());
+		profile.setUserName(login.getUserName());
 		
 		return Response.status(Status.OK).entity(profile).build();
 	}
