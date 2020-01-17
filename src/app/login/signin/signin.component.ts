@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
 
   createForm(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      userName: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]]
     });
   }
@@ -39,11 +39,11 @@ export class SigninComponent implements OnInit {
     }
 
     // toma los datos del formulario
-    const username = this.loginForm.get('username').value;
+    const userName = this.loginForm.get('userName').value;
 
     const password = this.loginForm.get('password').value;
 
-    this.loginService.login(username, password).subscribe(
+    this.loginService.login(userName, password).subscribe(
       data => {
         console.log(data);
         console.log('direccioando');
@@ -53,7 +53,7 @@ export class SigninComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get username() { return this.loginForm.get('username'); }
+  get userName() { return this.loginForm.get('userName'); }
   get password() { return this.loginForm.get('password'); }
 
 }

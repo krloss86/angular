@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/models/user';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,20 +21,21 @@ export class ProfileComponent implements OnInit {
     private loginService: AuthenticationService,
     private router: Router,
     private route: ActivatedRoute,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private profileService: ProfileService
     ) {
       this.createForm();
     }
 
   createForm(): void {
     this.profileForm = this.formBuilder.group({
-      username: ['', Validators.required]
+      userName: ['', Validators.required]
     });
   }
 
   ngOnInit() {
     this.user = this.route.snapshot.data.profileData;
-    this.profileForm.setValue({username: this.user.username});
+    this.profileForm.setValue({userName: this.user.userName});
   }
 
   logout(): void {
@@ -45,6 +47,21 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    this.alertService.success('Se ha actualizado los datos del perfil');
+
+    const user: User = {
+      firstName: this.profileForm.get('firstName').value,
+      lastName: this.profileForm.get('lastName').value,
+      userName: this.profileForm.get('userName').value,
+      password: this.profileForm.get('password').value,
+      token: ''
+    };
+
+    this.profileService.updateProfile(user)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.alertService.success('Se ha actualizado los datos del perfil');
+        }
+      );
   }
 }

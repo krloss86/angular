@@ -23,10 +23,10 @@
                                     </div>
                                     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="user">
                                         <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input type="text" formControlName="username" class="form-control form-control-user" [ngClass]="{ 'is-invalid': submitted && username.errors}" />
-                                            <div *ngIf="submitted && username.errors" class="invalid-feedback">
-                                                <div *ngIf="username.errors.required">Username is required</div>
+                                            <label for="userName">Username</label>
+                                            <input type="text" formControlName="userName" class="form-control form-control-user" [ngClass]="{ 'is-invalid': submitted && userName.errors}" />
+                                            <div *ngIf="submitted && userName.errors" class="invalid-feedback">
+                                                <div *ngIf="userName.errors.required">Username is required</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
