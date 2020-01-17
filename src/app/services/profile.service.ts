@@ -10,14 +10,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProfileService extends BaseService {
-  private updateEndPoint = 'api/user';
+  private updateEndPoint = '/api/profile';
   constructor(private httpclient: HttpClient) {
     super(httpclient);
   }
 
   updateProfile(user: User): Observable<User> {
     return this.httpclient.put<User>(
-      `${super.baseUrl}${this.updateEndPoint}`, user
+      `${this.baseUrl}${this.updateEndPoint}`, user
     );
   }
 

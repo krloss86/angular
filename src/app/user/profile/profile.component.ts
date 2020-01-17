@@ -49,11 +49,15 @@ export class ProfileComponent implements OnInit {
   onSubmit() {
 
     const user: User = {
-      firstName: this.profileForm.get('firstName').value,
-      lastName: this.profileForm.get('lastName').value,
       userName: this.profileForm.get('userName').value,
+      /*firstName: this.profileForm.get('firstName').value,
+      lastName: this.profileForm.get('lastName').value,
       password: this.profileForm.get('password').value,
-      token: ''
+      token: ''*/
+      firstName: 'apellido',
+      lastName: 'nombre',
+      token: '',
+      curso: {nombre:'a',dia:'a', turno:'a', horario:'a'},
     };
 
     this.profileService.updateProfile(user)

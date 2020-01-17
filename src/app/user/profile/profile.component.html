@@ -45,43 +45,37 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="text" class="col-4 col-form-label">Nick Name*</label> 
+                                            <label for="text" class="col-4 col-form-label">Curso*</label> 
                                             <div class="col-8">
                                             <input id="text" name="text" placeholder="Nick Name" class="form-control here" required="required" type="text">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="select" class="col-4 col-form-label">Display Name public as</label> 
+                                            <label for="select" class="col-4 col-form-label">Dia</label> 
                                             <div class="col-8">
                                             <select id="select" name="select" class="custom-select">
-                                                <option value="admin">Admin</option>
+                                                <option value="admin">Lunes</option>
+                                                <option value="admin">Martes</option>
+                                                <option value="admin">Miercoles</option>
+                                                <option value="admin">Jueves</option>
+                                                <option value="admin">Viernes</option>
+                                                <option value="admin">Sabado</option>
+                                                <option value="admin">Domingo</option>
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="email" class="col-4 col-form-label">Email*</label> 
+                                            <label for="email" class="col-4 col-form-label">Turno*</label> 
                                             <div class="col-8">
                                             <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="website" class="col-4 col-form-label">Website</label> 
+                                            <label for="website" class="col-4 col-form-label">Horario</label> 
                                             <div class="col-8">
                                             <input id="website" name="website" placeholder="website" class="form-control here" type="text">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="publicinfo" class="col-4 col-form-label">Public Info</label> 
-                                            <div class="col-8">
-                                            <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="newpass" class="col-4 col-form-label">New Password</label> 
-                                            <div class="col-8">
-                                            <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
-                                            </div>
-                                        </div> 
                                         <div class="form-group row">
                                             <div class="offset-4 col-8">
                                             <button [disabled]="!profileForm.valid"class="btn btn-primary">Update My Profile</button>
