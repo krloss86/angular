@@ -1,8 +1,8 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-signin',
@@ -16,7 +16,7 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService,
+    private loginService: AuthenticationService,
     private router: Router) {
       this.createForm();
   }
@@ -43,7 +43,7 @@ export class SigninComponent implements OnInit {
 
     const password = this.loginForm.get('password').value;
 
-    this.loginService._login(username, password).subscribe(
+    this.loginService.login(username, password).subscribe(
       data => {
         console.log(data);
         console.log('direccioando');

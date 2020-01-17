@@ -1,8 +1,9 @@
 import { AlertService } from './../../services/alert.service';
-import { LoginService } from './../../login/login.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-profile',
@@ -12,11 +13,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ProfileComponent implements OnInit {
 
   profileForm: FormGroup;
+  user: User;
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService,
+    private loginService: AuthenticationService,
     private router: Router,
+    private route: ActivatedRoute,
     private alertService: AlertService
     ) {
       this.createForm();
@@ -29,12 +32,14 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.user = this.route.snapshot.data.profileData;
+    this.profileForm.setValue({username: this.user.username});
   }
 
   logout(): void {
     console.log('logout de usuario');
     this.loginService.logout();
+
     console.log('redireccionando a / ');
     this.router.navigate(['']);
   }

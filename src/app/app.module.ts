@@ -1,33 +1,24 @@
-import { UserModule } from './user/user.module';
-import { ProfileComponent } from './user/profile/profile.component';
-import { RegisterComponent } from './login/register/register.component';
-import { SigninComponent } from './login/signin/signin.component';
-import { LoginModule } from './login/login.module';
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginService } from './login/login.service';
-import { HttpClientModule } from '@angular/common/http';
-import { AlertComponent } from './alert/alert.component';
+import { LoginModule } from './login/login.module';
+import { AuthenticationService } from './services/authentication.service';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // AlertComponent,
-    // SigninComponent,
-    // RegisterComponent
-    // ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LoginModule,
     HttpClientModule,
-    UserModule
+    UserModule,
   ],
-  providers: [LoginService],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,21 +1,18 @@
-import { AlertService } from './../services/alert.service';
-import { AlertComponent } from './../alert/alert.component';
-import { LoginService } from './../login/login.service';
-import { NgModule } from '@angular/core';
+import { AppCommonsModule } from './../app-commons/app-commons.module';
 import { CommonModule } from '@angular/common';
-import { ProfileComponent } from './profile/profile.component';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    AlertComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ],
-  providers: [AlertService]
+    AppCommonsModule
+  ],
 })
 export class UserModule { }
