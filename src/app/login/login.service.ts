@@ -1,24 +1,30 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
+  private baseUrl = environment.apiUrl;
   private loginEndPoint = '/assets/login/login.json';
+  private loginEndPointRest = 'api/auth';
 
   constructor(private httpClient: HttpClient) { }
 
-  login(username: string, password: string): any {
-    this.httpClient
-      .get(this.loginEndPoint)
-      .subscribe(data => console.log(data.toString())
+  _login(username: string, password: string): Observable<any> {
+
+    const myheader = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.httpClient.
+      post<any>(`${this.baseUrl}/${this.loginEndPointRest}`,
+        { username, password },
+        { headers: myheader}
     );
   }
 
-  _login(email: string, password: string): Observable<any> {
+  login(email: string, password: string): any {
     return this.httpClient.get(this.loginEndPoint);
   }
 
