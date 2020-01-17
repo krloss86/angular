@@ -8,15 +8,18 @@ public class Profile {
 
 	private String username;
 	
+	private String lastName;
+	
 	private Curso curso;
 	
 	public Profile() {
 		
 	}
 	
-	public Profile(String username, Curso curso) {
+	public Profile(String username, String lastName, Curso curso) {
 		super();
 		this.username = username;
+		this.lastName = lastName;
 		this.curso = curso;
 	}
 
@@ -35,6 +38,13 @@ public class Profile {
 	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
-	
 
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
 }

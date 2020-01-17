@@ -9,20 +9,24 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import ar.com.educacionit.dao.ProfileDAO;
-import ar.com.educacionit.domain.LoginData;
 import ar.com.educacionit.domain.Profile;
+import ar.com.educacionit.domain.RegisterData;
 
-@Path("auth")
-public class LoginService {
+@Path("user")
+public class RegisterService {
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createProducto(LoginData login) {
+	public Response register(RegisterData registerData) {
 		
 		Profile profile = ProfileDAO.profile;
 		
-		profile.setUsername(login.getUsername());
+		profile.setCurso(null);
+		
+		profile.setLastName(registerData.getLastName());
+		
+		profile.setUsername(registerData.getUserName());
 		
 		return Response.status(Status.OK).entity(profile).build();
 	}

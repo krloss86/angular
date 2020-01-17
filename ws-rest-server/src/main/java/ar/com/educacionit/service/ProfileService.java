@@ -20,7 +20,7 @@ public class ProfileService {
 	@GET
 	@Path("/{username}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getProducto(@PathParam("username") String username) {
+	public Response getProfile(@PathParam("username") String username) {
 		
 		Profile profile = currentProfile;
 		

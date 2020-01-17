@@ -1,7 +1,8 @@
+import { AlertService } from './../../services/alert.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../login.service';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
   selector: 'app-register',
@@ -16,8 +17,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
       private formBuilder: FormBuilder,
-      private router: Router,
-      private authenticationService: LoginService
+      private registerService: RegisterService,
+      private alertService: AlertService
   ) {
       // redirect to home if already logged in
       /*if (this.authenticationService.currentUserValue) {
@@ -34,15 +35,29 @@ export class RegisterComponent implements OnInit {
       });
   }
 
-  register(): void {
-
-  }
-
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
   onSubmit(): void {
-    console.log(this.registerForm.controls);
-    this.router.navigate(['/profile']);
+
+    if (!this.registerForm.valid) {
+      return ;
+    }
+
+    const user = {
+      firstName: this.registerForm.get('firstName').value,
+      lastName: this.registerForm.get('lastName').value,
+      userName: this.registerForm.get('username').value,
+      password: this.registerForm.get('password').value,
+    };
+
+    this.registerService.register(user)
+    .subscribe( data => {
+        console.log(data);
+        this.alertService.success(`se ha dado de alta exitosamente el usuario ${data.username}`);
+        this.registerForm.reset();
+        // this.router.navigate(['/login']);
+      }
+    );
   }
 }

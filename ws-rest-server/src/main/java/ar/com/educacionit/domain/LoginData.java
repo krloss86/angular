@@ -1,4 +1,4 @@
-package ar.com.educacionit.service;
+package ar.com.educacionit.domain;
 
 public class LoginData {
 
