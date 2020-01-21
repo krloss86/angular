@@ -1,6 +1,6 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -13,6 +13,7 @@ export class SigninComponent implements OnInit {
   title = 'Bienvenido';
   loginForm: FormGroup;
   submitted = false;
+  loading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,7 +35,7 @@ export class SigninComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    if (!this.loginForm.valid) {
+    if (this.loginForm.invalid) {
       return;
     }
 
@@ -43,17 +44,24 @@ export class SigninComponent implements OnInit {
 
     const password = this.loginForm.get('password').value;
 
+    this.loading = true;
     this.loginService.login(username, password).subscribe(
       data => {
         console.log(data);
         console.log('direccioando');
         this.router.navigate(['/profile']);
+      },
+      error => {
+        this.loading = false;
       }
     );
   }
 
   // convenience getter for easy access to form fields
+  /*
   get username() { return this.loginForm.get('username'); }
   get password() { return this.loginForm.get('password'); }
-
+  */
+  // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
 }
