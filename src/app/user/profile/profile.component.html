@@ -15,73 +15,25 @@
                         <div class="row">
                             <div class="col-lg-3 d-none d-lg-block">
                                 <div class="list-group ">
-                                    <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
-                                    <a href="#" class="list-group-item list-group-item-action">User Management</a>
-                                    <a href="#" class="list-group-item list-group-item-action" (click)="logout()">Logout</a>
+                                    <a (click)="changeRouterLink('/profile/persona-data')" routerLink="/profile/persona-data" class="list-group-item list-group-item-action" routerLinkActive="active">Dashboard</a>
+                                    <a (click)="changeRouterLink('/profile/curso-data')" routerLink="/profile/curso-data" class="list-group-item list-group-item-action" routerLinkActive="active">Datos Curso</a>
+                                    <a href="#" class="list-group-item list-group-item-action" routerLinkActive="active" (click)="logout()">Logout</a>
                                   </div> 
-                            </div>                            
+                            </div>
                             <div class="col-lg-9">
                                 <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Datos de Perfil</h1>
+                                    <!--
+                                    <router-outlet></router-outlet>
+                                    -->
+                                    <div [ngSwitch]="currentPath">
+                                        <div *ngSwitchCase="'/profile/persona-data'">
+                                            <app-persona-data></app-persona-data>
+                                        </div>
+                                        <div *ngSwitchCase="'/profile/curso-data'">
+                                            <app-curso-data></app-curso-data>
+                                        </div>
+                                        <div *ngSwitchDefault>output2</div>
                                     </div>
-                                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-                                        <div class="form-group row">
-                                            <label for="userName" class="col-4 col-form-label">User Name*</label> 
-                                            <div class="col-8">
-                                                <input id="userName" formControlName="userName" placeholder="Username" class="form-control here" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="name" class="col-4 col-form-label">First Name</label> 
-                                            <div class="col-8">
-                                            <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="lastname" class="col-4 col-form-label">Last Name</label> 
-                                            <div class="col-8">
-                                            <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="text" class="col-4 col-form-label">Curso*</label> 
-                                            <div class="col-8">
-                                            <input id="text" name="text" placeholder="Nick Name" class="form-control here" required="required" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="select" class="col-4 col-form-label">Dia</label> 
-                                            <div class="col-8">
-                                            <select id="select" name="select" class="custom-select">
-                                                <option value="admin">Lunes</option>
-                                                <option value="admin">Martes</option>
-                                                <option value="admin">Miercoles</option>
-                                                <option value="admin">Jueves</option>
-                                                <option value="admin">Viernes</option>
-                                                <option value="admin">Sabado</option>
-                                                <option value="admin">Domingo</option>
-                                            </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="email" class="col-4 col-form-label">Turno*</label> 
-                                            <div class="col-8">
-                                            <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="website" class="col-4 col-form-label">Horario</label> 
-                                            <div class="col-8">
-                                            <input id="website" name="website" placeholder="website" class="form-control here" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="offset-4 col-8">
-                                            <button [disabled]="!profileForm.valid"class="btn btn-primary">Update My Profile</button>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>

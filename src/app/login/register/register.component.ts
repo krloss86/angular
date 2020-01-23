@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { AlertService } from './../../services/alert.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -39,25 +40,30 @@ export class RegisterComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit(): void {
+    this.submitted = true;
 
     if (!this.registerForm.valid) {
       return ;
     }
 
-    const user = {
+    const user: User = {
       firstName: this.registerForm.get('firstName').value,
       lastName: this.registerForm.get('lastName').value,
       userName: this.registerForm.get('userName').value,
       password: this.registerForm.get('password').value,
     };
-
+    this.loading = true;
     this.registerService.register(user)
-    .subscribe( data => {
-        console.log(data);
-        this.alertService.success(`se ha dado de alta exitosamente el usuario ${data.userName}`);
-        this.registerForm.reset();
-        // this.router.navigate(['/login']);
-      }
-    );
+      .subscribe(
+         data => {
+          console.log(data);
+          this.alertService.success(`se ha dado de alta exitosamente el usuario ${data.userName}`);
+          this.registerForm.reset();
+          // this.router.navigate(['/login']);
+        },
+        error => {
+          this.loading = false;
+        }
+      );
   }
 }

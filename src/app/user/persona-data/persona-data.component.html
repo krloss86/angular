@@ -1,0 +1,28 @@
+<div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Datos de Perfil</h1>
+</div>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+        <label for="userName" class="col-4 col-form-label">User Name*</label> 
+        <div class="col-8">
+            <input id="userName" formControlName="userName" placeholder="Username" class="form-control here" type="text">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="firstName" class="col-4 col-form-label">First Name</label> 
+        <div class="col-8">
+        <input id="firstName" formControlName="firstName" placeholder="First Name" class="form-control here" type="text">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="lastName" class="col-4 col-form-label">Last Name</label> 
+        <div class="col-8">
+        <input id="lastName" formControlName="lastName" placeholder="Last Name" class="form-control here" type="text">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+        <button [disabled]="!profileForm.valid"class="btn btn-primary">Actualizar</button>
+        </div>
+    </div>
+</form>

@@ -9,7 +9,7 @@ public class ProfileDAO {
 	
 	private static Profile getProfile() {
 		
-		Profile profile = new Profile("educacionit", "educacionit", "educacionit,", new Curso("angular", "sabdado", "mañana", "10-14"), "token");
+		Profile profile = new Profile("educacionit", "educacionit", "educacionit,", new Curso("angular", "Sabado", "mañana", "10-14"), "token");
 		
 		return profile;
 	}

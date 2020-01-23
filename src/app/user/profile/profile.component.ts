@@ -1,10 +1,11 @@
-import { AlertService } from './../../services/alert.service';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { User } from 'src/app/models/user';
-import { ProfileService } from 'src/app/services/profile.service';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from './../../models/user';
+import { AlertService } from './../../services/alert.service';
+import { AuthenticationService } from './../../services/authentication.service';
+import { ProfileService } from './../../services/profile.service';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-profile',
@@ -13,9 +14,8 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  profileForm: FormGroup;
   user: User;
-
+  currentPath: string;
   constructor(
     private formBuilder: FormBuilder,
     private loginService: AuthenticationService,
@@ -24,18 +24,12 @@ export class ProfileComponent implements OnInit {
     private alertService: AlertService,
     private profileService: ProfileService
     ) {
-      this.createForm();
+      // tomo la url desde el reouter para usarlo en el switch 
+      this.currentPath = this.router.url;
     }
-
-  createForm(): void {
-    this.profileForm = this.formBuilder.group({
-      userName: ['', Validators.required]
-    });
-  }
 
   ngOnInit() {
     this.user = this.route.snapshot.data.profileData;
-    this.profileForm.setValue({userName: this.user.userName});
   }
 
   logout(): void {
@@ -46,26 +40,8 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  onSubmit() {
-
-    const user: User = {
-      userName: this.profileForm.get('userName').value,
-      /*firstName: this.profileForm.get('firstName').value,
-      lastName: this.profileForm.get('lastName').value,
-      password: this.profileForm.get('password').value,
-      token: ''*/
-      firstName: 'apellido',
-      lastName: 'nombre',
-      token: '',
-      curso: {nombre:'a',dia:'a', turno:'a', horario:'a'},
-    };
-
-    this.profileService.updateProfile(user)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.alertService.success('Se ha actualizado los datos del perfil');
-        }
-      );
+  changeRouterLink(link: string) {
+    console.log(link);
+    this.currentPath =  link;
   }
 }

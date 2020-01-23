@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { AuthenticationService } from './authentication.service';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,11 @@ export class ProfileService extends BaseService {
   updateProfile(user: User): Observable<User> {
     return this.httpclient.put<User>(
       `${this.baseUrl}${this.updateEndPoint}`, user
-    );
+    ).pipe(map(data => {
+      // store user details and jwt token in local storage to keep user logged in between page refreshes
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      return data;
+    }));
   }
 
 }

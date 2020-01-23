@@ -13,6 +13,7 @@ export class SigninComponent implements OnInit {
   title = 'Bienvenido';
   loginForm: FormGroup;
   submitted = false;
+  loading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,11 +44,16 @@ export class SigninComponent implements OnInit {
 
     const password = this.loginForm.get('password').value;
 
+    this.loading = true;
+
     this.loginService.login(userName, password).subscribe(
       data => {
         console.log(data);
         console.log('direccioando');
         this.router.navigate(['/profile']);
+      },
+      error => {
+        this.loading = false;
       }
     );
   }
