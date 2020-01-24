@@ -1,8 +1,7 @@
-import { User } from './../../models/user';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
+import { User } from './../../models/user';
 import { AlertService } from './../../services/alert.service';
 
 @Component({
@@ -19,8 +18,6 @@ export class CursoDataComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute,
     private alertService: AlertService,
     private profileService: ProfileService
     ) {
@@ -36,7 +33,6 @@ export class CursoDataComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.user = this.route.snapshot.data.profileData;
     this.profileForm.setValue(
       {
         curso: this.curso.nombre,
@@ -48,10 +44,6 @@ export class CursoDataComponent implements OnInit {
   }
 
   onSubmit() {
-    // toma los datos del usuario desde el local stotage para mantener los datos
-    // de perfil, dado que solo se actualizan los datos del curso
-    const currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
-
     const user: any = {
       curso: {
           nombre: this.profileForm.get('curso').value,
@@ -59,13 +51,9 @@ export class CursoDataComponent implements OnInit {
           turno: this.profileForm.get('turno').value,
           horario: this.profileForm.get('horario').value
       },
-      // completo los datos de perfil para no sobreescribir con nulos dichos campos
-      firstName: currentUser.firstName,
-      lastName: currentUser.lastName,
-      userName: currentUser.userName
     };
 
-    this.profileService.updateProfile(user)
+    this.profileService.updateCurso(user)
       .subscribe(
         data => {
           console.log(data);

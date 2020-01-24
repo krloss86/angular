@@ -17,10 +17,11 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     ) {
-      // tomo la url desde el reouter para usarlo en el switch
+      // tomo la url desde el router para usarlo en el switch
       this.currentPath = this.router.url;
-      console.log('tomo dato del resolve');
-      this.user = this.route.snapshot.data.profileData;
+
+      // console.log('tomo dato del resolve');
+      // this.user = this.route.snapshot.data.profileData;
     }
 
   ngOnInit() {

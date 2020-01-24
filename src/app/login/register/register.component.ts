@@ -21,10 +21,6 @@ export class RegisterComponent implements OnInit {
       private registerService: RegisterService,
       private alertService: AlertService
   ) {
-      // redirect to home if already logged in
-      /*if (this.authenticationService.currentUserValue) {
-          this.router.navigate(['/home']);
-      }*/
   }
 
   ngOnInit() {
@@ -59,9 +55,9 @@ export class RegisterComponent implements OnInit {
           console.log(data);
           this.alertService.success(`se ha dado de alta exitosamente el usuario ${data.userName}`);
           this.registerForm.reset();
-          // this.router.navigate(['/login']);
         },
         error => {
+          console.log(error);
           this.loading = false;
         }
       );

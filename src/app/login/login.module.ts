@@ -1,3 +1,4 @@
+import { JwtInterceptor } from './../services/jwt.interceptor';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,7 @@ import { SigninComponent } from './signin/signin.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ]
 })
 export class LoginModule { }
