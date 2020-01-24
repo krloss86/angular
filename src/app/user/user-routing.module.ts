@@ -15,15 +15,15 @@ const routes: Routes = [
     },
     children: [
       {
-        path: 'curso-data', component: CursoDataComponent,
+        path: 'curso-data', component: CursoDataComponent/*,
         resolve : {
           profileData: ProfileResolve
-        },
+        },*/
       },
       {
-        path: 'persona-data', component: PersonaDataComponent, resolve : {
+        path: 'persona-data', component: PersonaDataComponent/*, resolve : {
           profileData: ProfileResolve
-        },
+        },*/
       }
     ]
   }

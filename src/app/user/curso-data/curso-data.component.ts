@@ -1,10 +1,9 @@
+import { User } from './../../models/user';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
 import { AlertService } from './../../services/alert.service';
-import { AuthenticationService } from './../../services/authentication.service';
-import { User } from 'src/app/models/user';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-curso-data',
@@ -14,13 +13,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class CursoDataComponent implements OnInit {
 
   profileForm: FormGroup;
-  user: User;
+  @Input() curso: any;
   dias: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
   diaCurso: string;
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: AuthenticationService,
     private router: Router,
     private route: ActivatedRoute,
     private alertService: AlertService,
@@ -38,26 +36,33 @@ export class CursoDataComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.route.snapshot.data.profileData;
+    // this.user = this.route.snapshot.data.profileData;
     this.profileForm.setValue(
       {
-        curso: this.user.curso.nombre,
-        turno: this.user.curso.turno,
-        horario: this.user.curso.horario,
+        curso: this.curso.nombre,
+        turno: this.curso.turno,
+        horario: this.curso.horario,
       }
     );
-    this.diaCurso = this.user.curso.dia;
+    this.diaCurso = this.curso.dia;
   }
 
   onSubmit() {
+    // toma los datos del usuario desde el local stotage para mantener los datos
+    // de perfil, dado que solo se actualizan los datos del curso
+    const currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
 
     const user: any = {
       curso: {
           nombre: this.profileForm.get('curso').value,
           dia: this.diaCurso,
           turno: this.profileForm.get('turno').value,
-          horario: this.profileForm.get('horario').value,
+          horario: this.profileForm.get('horario').value
       },
+      // completo los datos de perfil para no sobreescribir con nulos dichos campos
+      firstName: currentUser.firstName,
+      lastName: currentUser.lastName,
+      userName: currentUser.userName
     };
 
     this.profileService.updateProfile(user)

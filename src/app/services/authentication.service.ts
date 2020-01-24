@@ -1,9 +1,9 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { User } from './../models/user';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { User } from '../models/user';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -34,5 +34,10 @@ export class AuthenticationService {
         // remove user from local storage and set current user to null
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
+    }
+
+    updateUser(user: User): void {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
     }
 }

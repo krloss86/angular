@@ -1,3 +1,4 @@
+import { AppCommonsModule } from './app-commons/app-commons.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,6 +20,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LoginModule,
     UserModule,
     AppRoutingModule,
+    AppCommonsModule,
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]

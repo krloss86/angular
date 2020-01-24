@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from './../../models/user';
-import { AlertService } from './../../services/alert.service';
 import { AuthenticationService } from './../../services/authentication.service';
-import { ProfileService } from './../../services/profile.service';
-import { debug } from 'util';
 
 @Component({
   selector: 'app-profile',
@@ -17,19 +13,23 @@ export class ProfileComponent implements OnInit {
   user: User;
   currentPath: string;
   constructor(
-    private formBuilder: FormBuilder,
     private loginService: AuthenticationService,
     private router: Router,
     private route: ActivatedRoute,
-    private alertService: AlertService,
-    private profileService: ProfileService
     ) {
-      // tomo la url desde el reouter para usarlo en el switch 
+      // tomo la url desde el reouter para usarlo en el switch
       this.currentPath = this.router.url;
+      console.log('tomo dato del resolve');
+      this.user = this.route.snapshot.data.profileData;
     }
 
   ngOnInit() {
-    this.user = this.route.snapshot.data.profileData;
+    this.loginService.currentUser.subscribe(
+      data => {
+        console.log('cambio de usuario');
+        this.user = data;
+      }
+    );
   }
 
   logout(): void {

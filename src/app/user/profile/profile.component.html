@@ -1,45 +1,43 @@
-<div class="bg-gradient-primary" style="height: 100vh;">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <app-alert></app-alert>
-            </div>
-        </div>
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-            <div class="col-xl-10 col-lg-12 col-md-9">
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- main app container -->
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-3 d-none d-lg-block">
-                                <div class="list-group ">
-                                    <a (click)="changeRouterLink('/profile/persona-data')" routerLink="/profile/persona-data" class="list-group-item list-group-item-action" routerLinkActive="active">Dashboard</a>
-                                    <a (click)="changeRouterLink('/profile/curso-data')" routerLink="/profile/curso-data" class="list-group-item list-group-item-action" routerLinkActive="active">Datos Curso</a>
-                                    <a href="#" class="list-group-item list-group-item-action" routerLinkActive="active" (click)="logout()">Logout</a>
-                                  </div> 
-                            </div>
-                            <div class="col-lg-9">
-                                <div class="p-5">
-                                    <!--
-                                    <router-outlet></router-outlet>
-                                    -->
-                                    <div [ngSwitch]="currentPath">
-                                        <div *ngSwitchCase="'/profile/persona-data'">
-                                            <app-persona-data></app-persona-data>
+<!--<div class="bg-gradient-primary" style="height: 100vh;">
+    <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-1">
+                -->                    
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="list-group p-1">
+                                <a (click)="changeRouterLink('/profile/persona-data')" routerLink="/profile/persona-data" class="list-group-item list-group-item-action" routerLinkActive="active">Datos de Perfil</a>
+                                <a (click)="changeRouterLink('/profile/curso-data')" routerLink="/profile/curso-data" class="list-group-item list-group-item-action" routerLinkActive="active">Datos Curso</a>
+                                <a href="#" class="list-group-item list-group-item-action" routerLinkActive="active" (click)="logout()">Logout</a>
+                            </div> 
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="p-5">
+                                <!--
+                                <router-outlet></router-outlet>
+                                -->
+                                <div [ngSwitch]="currentPath">
+                                    <div *ngSwitchCase="'/profile/persona-data'">
+                                        <app-persona-data [user]="user"></app-persona-data>
+                                    </div>
+                                    <div *ngSwitchCase="'/profile/curso-data'">
+                                        <app-curso-data [curso]="user.curso"></app-curso-data>
+                                    </div>
+                                    <div *ngSwitchDefault>
+                                        <div class="text-center">
+                                            <h1 class="h1 text-gray-900 mb-4">
+                                                Hola {{user.firstName}} {{user.lastName}}
+                                            </h1>
                                         </div>
-                                        <div *ngSwitchCase="'/profile/curso-data'">
-                                            <app-curso-data></app-curso-data>
-                                        </div>
-                                        <div *ngSwitchDefault>output2</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div>-->

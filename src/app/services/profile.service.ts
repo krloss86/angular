@@ -1,9 +1,9 @@
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BaseService } from './baseservice';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
-import { AuthenticationService } from './authentication.service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -12,16 +12,18 @@ import { map } from 'rxjs/operators';
 })
 export class ProfileService extends BaseService {
   private updateEndPoint = '/api/profile';
-  constructor(private httpclient: HttpClient) {
-    super(httpclient);
-  }
+  constructor(
+    private httpclient: HttpClient,
+    private authenticationService: AuthenticationService) {
+      super(httpclient);
+    }
 
   updateProfile(user: User): Observable<User> {
     return this.httpclient.put<User>(
       `${this.baseUrl}${this.updateEndPoint}`, user
     ).pipe(map(data => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('currentUser', JSON.stringify(user));
+      // store user details and jwt token to keep user logged in between page refreshes
+      this.authenticationService.updateUser(user);
       return data;
     }));
   }

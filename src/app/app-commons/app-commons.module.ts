@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
   declarations: [
     AlertComponent
   ],
-  providers: [AlertService],
+  imports: [
+    CommonModule
+  ],
+  providers: [
+    AlertService
+  ],
   exports: [
     AlertComponent
   ]
