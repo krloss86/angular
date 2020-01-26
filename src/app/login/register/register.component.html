@@ -1,10 +1,10 @@
 <div class="row">
-    <div class="col-12">
-        <form>
+    <div class="col-6">
+        <form [formGroup]="registerForm">
             <div class="form-row">
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault01">First name</label>
-                    <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
+                    <input type="text" class="form-control" id="validationDefault01" formControlName="firstName">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationDefault02">Last name</label>
@@ -46,7 +46,30 @@
                     </label>
                 </div>
             </div>
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <button [disabled]="registerForm.invalid" class="btn btn-primary" type="submit">Submit form</button>
         </form>
+    </div>
+    <div class="col-6">
+        <b>Informacion del registerForm</b>
+        <ul>
+            <li>
+                values:  {{registerForm.value | json}}    
+            </li>        
+            <li>
+                valid: <span [ngClass]="{'alert-success' : registerForm.valid, 'alert-danger' : !registerForm.valid}">{{registerForm.valid}} </span>
+            </li>
+            <li>
+                submited: {{registerForm.submitted}}    
+            </li>
+            <li>
+                pristine: {{registerForm.pristine}}
+            </li>
+            <li>
+                disty: {{registerForm.dirty}}
+            </li>
+            <li>
+                touched: {{registerForm.touched}}
+            </li>
+        </ul>
     </div>
 </div>
