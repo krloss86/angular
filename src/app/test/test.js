@@ -18,20 +18,12 @@ var Producto = /** @class */ (function () {
         this.id = nuevoId;
         this.titulo = nuevoTitulo;
     }
-    Object.defineProperty(Producto.prototype, "Id", {
-        get: function () {
-            return this.id;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Producto.prototype, "Titulo", {
-        get: function () {
-            return this.titulo;
-        },
-        enumerable: true,
-        configurable: true
-    });
+    Producto.prototype.getId = function () {
+        return this.id;
+    };
+    Producto.prototype.getTitulo = function () {
+        return this.titulo;
+    };
     return Producto;
 }());
 exports.Producto = Producto;

@@ -46,29 +46,29 @@
                     </label>
                 </div>
             </div>
-            <button [disabled]="registerForm.invalid" class="btn btn-primary" type="submit">Submit form</button>
+            <button class="btn btn-primary" type="submit">Submit form</button>
         </form>
     </div>
     <div class="col-6">
         <b>Informacion del registerForm</b>
         <ul>
             <li>
-                values:  {{registerForm.value | json}}    
+                values:  
             </li>        
             <li>
                 valid: <span [ngClass]="{'alert-success' : registerForm.valid, 'alert-danger' : !registerForm.valid}">{{registerForm.valid}} </span>
             </li>
             <li>
-                submited: {{registerForm.submitted}}    
+                submited:  
             </li>
             <li>
-                pristine: {{registerForm.pristine}}
+                pristine: 
             </li>
             <li>
-                disty: {{registerForm.dirty}}
+                disty: 
             </li>
             <li>
-                touched: {{registerForm.touched}}
+                touched: 
             </li>
         </ul>
     </div>

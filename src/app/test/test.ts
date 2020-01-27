@@ -5,10 +5,10 @@ export class Producto {
         this.id = nuevoId;
         this.titulo = nuevoTitulo;
     }
-    public get Id(): number {
+    public getId(): number {
         return this.id;
     }
-    public get Titulo(): string {
+    public getTitulo(): string {
         return this.titulo;
     }
 }
