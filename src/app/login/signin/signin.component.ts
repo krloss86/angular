@@ -19,4 +19,6 @@ export class SigninComponent implements OnInit {
   submitForm(formulario: any) {
     console.log(formulario.value);
   }
+
+  log(x) { console.log(x); }
 }

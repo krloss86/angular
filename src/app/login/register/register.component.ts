@@ -15,16 +15,11 @@ export class RegisterComponent implements OnInit {
 
    createForm(): FormGroup {
      return this.registerForm = this.formBuilder.group({
-       firstName: [Validators.required]
+       firstName: ['', [Validators.required]]
      });
    }
 
   ngOnInit() {
-    this.registerForm.setValue(
-      {
-        firstName: ''
-      }
-    );
   }
 
   onSubmit() {
