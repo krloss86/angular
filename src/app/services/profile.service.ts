@@ -11,10 +11,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProfileService extends BaseService {
-  // private updateEndPoint = '/api/profile';
 
-  private updateProfileEndPoint = '/assets/profile/updateProfile.json';
-  private updateCursoEndPoint = '/assets/profile/updateCurso.json';
+  private updateEndPoint = '/api/profile';
 
   constructor(
     private httpclient: HttpClient,
@@ -29,12 +27,9 @@ export class ProfileService extends BaseService {
     // completa los datos del curso
     user.curso = currentUser.curso;
 
-    /*return this.httpclient.put<User>(
+    return this.httpclient.put<User>(
       `${this.baseUrl}${this.updateEndPoint}`,
        user
-    )*/
-    return this.httpclient.get<User>(
-      `${this.baseUrl}${this.updateProfileEndPoint}`
     ).pipe(map(data => {
       // store user details and jwt token to keep user logged in between page refreshes
       this.authenticationService.updateUser(user);
@@ -45,11 +40,10 @@ export class ProfileService extends BaseService {
   updateCurso(curso: any): Observable<User> {
     const currentUser = this.authenticationService.currentUserValue;
     currentUser.curso = curso;
-    /*return this.httpclient.put<User>(
-      `${this.baseUrl}${this.updateEndPoint}`, currentUser
-    )*/
-    return this.httpclient.get<User>(
-      `${this.baseUrl}${this.updateCursoEndPoint}`
+    console.log(currentUser);
+    return this.httpclient.put<User>(
+      `${this.baseUrl}${this.updateEndPoint}`,
+      currentUser
     ).pipe(map(data => {
       // store user details and jwt token to keep user logged in between page refreshes
       this.authenticationService.updateUser(currentUser);

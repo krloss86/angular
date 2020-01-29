@@ -1,5 +1,4 @@
 export const environment = {
-  // apiUrl: 'http://localhost:8083/app-rest',
-  apiUrl: '',
+  apiUrl: 'https://angular-app-rest.herokuapp.com',
   production: true
 };

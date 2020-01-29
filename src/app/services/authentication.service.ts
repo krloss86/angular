@@ -20,12 +20,12 @@ export class AuthenticationService {
     }
 
     login(userName: string, password: string) {
-        // return this.http.post<any>(`${environment.apiUrl}/api/auth`,
-        return this.http.get<any>(`${environment.apiUrl}/assets/login/login.json`)
-            .pipe(map((user: User) => {
-                this.updateUser(user);
-                return user;
-            }));
+        return this.http.post<any>(`${environment.apiUrl}/api/auth`,
+            {userName, password}
+        ).pipe(map((user: User) => {
+            this.updateUser(user);
+            return user;
+        }));
     }
 
     logout() {
