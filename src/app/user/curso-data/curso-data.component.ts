@@ -44,16 +44,14 @@ export class CursoDataComponent implements OnInit {
   }
 
   onSubmit() {
-    const user: any = {
-      curso: {
+    const curso = {
           nombre: this.profileForm.get('curso').value,
           dia: this.diaCurso,
           turno: this.profileForm.get('turno').value,
           horario: this.profileForm.get('horario').value
-      },
     };
 
-    this.profileService.updateCurso(user)
+    this.profileService.updateCurso(curso)
       .subscribe(
         data => {
           console.log(data);
