@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "curso-angular": {
+    "clase3-servicios-v1": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/curso-angular",
+            "outputPath": "dist/clase3-servicios-v1",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -63,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "curso-angular:build"
+            "browserTarget": "clase3-servicios-v1:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "curso-angular:build:production"
+              "browserTarget": "clase3-servicios-v1:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "curso-angular:build"
+            "browserTarget": "clase3-servicios-v1:build"
           }
         },
         "test": {
@@ -111,15 +112,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "curso-angular:serve"
+            "devServerTarget": "clase3-servicios-v1:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "curso-angular:serve:production"
+              "devServerTarget": "clase3-servicios-v1:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "curso-angular"
+  "defaultProject": "clase3-servicios-v1"
 }

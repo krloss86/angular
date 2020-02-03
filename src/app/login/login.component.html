@@ -1,0 +1,16 @@
+<div class="card mb-2">    
+    <div class="card-body">
+        <h5 class="card-title">
+            LoginComponent
+        </h5>
+        <p class="card-text">
+            Servicio Asociado: {{contService.getNombre()}} : {{contService.getCount()}}
+        </p>
+        <p class="card-text">
+            Contador local: {{contador}}
+        </p>
+        <a href="#" class="btn btn-primary" (click)="sumar()">
+            Incrementar
+        </a>
+    </div>
+</div>
