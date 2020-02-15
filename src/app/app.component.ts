@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ContadorService } from './contador.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'curso-angular EducacionIt';
+export class AppComponent implements OnInit {
+  title = 'clase3';
+  valor: number;
+  constructor(private contadorService: ContadorService) {
+  }
+  ngOnInit() {
+    this.contadorService.getContadorSubjet().subscribe(
+      data => {
+        this.valor = data
+      }
+    );   
+  }
+
+  sumar(): void {
+    this.contadorService.sumar();
+  }
 }

@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiUrl: 'http://localhost:8083/app-rest',
-  production: false
+  production: false,
+  restUrl:  'https://reqres.in/api'
 };
 
 /*

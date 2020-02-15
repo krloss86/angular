@@ -1,24 +1,35 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModule } from './login/login.module';
-import { AuthenticationService } from './services/authentication.service';
-import { UserModule } from './user/user.module';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserComponent } from './user/user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserdataComponent } from './userdata/userdata.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { BaseserviceComponent } from './baseservice/baseservice.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserComponent,
+    UserdataComponent,
+    NotfoundComponent,
+    BaseserviceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule,
     HttpClientModule,
-    UserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [AuthenticationService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

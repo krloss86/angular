@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+      <div class="col-6 alert alert-danger" *ngIf="error">
+        {{mensajeError}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <form [formGroup]="loginForm" (ngSubmit)="executeLogin()">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="col-6">
+        
+      </div>
+    </div>
+</div>

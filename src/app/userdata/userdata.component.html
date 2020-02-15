@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-12">
+        Acceso permitido a seccion usuerdata
+    </div>    
+</div>
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-info" (click)="logout()">Logout</button>
+        <button class="btn btn-info" (click)="getUserData()">Get UserInfo</button>
+    </div>
+</div>
+<div class="row" *ngIf="user">
+    <div class="col-12">
+      {{user | json}}
+    </div>
+</div>

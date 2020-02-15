@@ -1,26 +1,27 @@
-import { ProfileComponent } from './user/profile/profile.component';
-import { RegisterComponent } from './login/register/register.component';
-import { SigninComponent } from './login/signin/signin.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './services/auth.guard';
-import { ProfileResolve } from './services/profile.service';
-
+import { UserComponent } from './user/user.component';
+import { UserdataComponent } from './userdata/userdata.component';
+import { LoginGuard } from './loginguard.service';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
-  {path: '', component: SigninComponent},
-  {path: 'login', component: SigninComponent},
-  {path: 'register', component: RegisterComponent},
-  // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]/*,
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard],
-    resolve : {
-        profileData: ProfileResolve
-      }
-  }
+  { 
+    path: '', component: UserComponent, 
+  },
+  {
+    path: 'user', component: UserComponent
+  },
+  {
+    path: 'userdata', component: UserdataComponent, canActivate: [LoginGuard]
+  },  
+  {
+    path: '**', component: NotfoundComponent
+  },  
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled', useHash: true, enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
