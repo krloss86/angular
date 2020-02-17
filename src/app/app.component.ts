@@ -10,13 +10,14 @@ export class AppComponent implements OnInit {
   title = 'clase3';
   valor: number;
   constructor(private contadorService: ContadorService) {
+    this.valor = 0;
   }
   ngOnInit() {
     this.contadorService.getContadorSubjet().subscribe(
       data => {
-        this.valor = data
+        this.valor = data;
       }
-    );   
+    );
   }
 
   sumar(): void {

@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ContadorService {
 
   private contadorBS = new BehaviorSubject(0);
-  private condorSubject  = this.contadorBS.asObservable();
+  private condorSubject = this.contadorBS.asObservable();
 
   private valor: number;
 
@@ -15,7 +15,7 @@ export class ContadorService {
     this.valor = 0;
   }
 
-  sumar() : void {
+  sumar(): void {
     this.contadorBS.next(++this.valor);
   }
 

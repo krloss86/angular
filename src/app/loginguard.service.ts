@@ -14,10 +14,10 @@ export class LoginGuard implements CanActivate {
 
     const token = localStorage.getItem('token');
 
-    if(token) {
+    if (token) {
       return true;
     }
     this.router.navigate(['/user']);
-    return false;    
+    return false;
   }
 }

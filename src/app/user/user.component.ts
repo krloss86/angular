@@ -3,7 +3,6 @@ import { PeticionerestService } from '../peticionerest.service';
 import { User } from '../user';
 import { AuthService } from '../auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  users: User;  
+  users: User;
   loginForm: FormGroup;
   mensajeError: string;
   error: boolean;
@@ -22,14 +21,14 @@ export class UserComponent implements OnInit {
     private auth: AuthService,
     private fb: FormBuilder,
     private router: Router
-    ) { 
-      this.createLoginForm();
+  ) {
+    this.createLoginForm();
   }
 
   createLoginForm(): void {
     this.loginForm = this.fb.group(
       {
-        email: ['eve.holt@reqres.in', [Validators.required, Validators.email]], 
+        email: ['eve.holt@reqres.in', [Validators.required, Validators.email]],
         password: ['cityslicka', [Validators.required, Validators.minLength(2)]]
       }
     );
@@ -37,28 +36,28 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.peticionerestService.getUser().subscribe(
-      data=> {
-        this.users = data
+      data => {
+        this.users = data;
       }
     );
   }
 
   executeLogin(): void {
 
-    if(!this.loginForm.valid) {
-      return ;
+    if (!this.loginForm.valid) {
+      return;
     }
 
     this.auth.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value)
-    .subscribe(
-      data => {
-        this.error =  false;
-        this.router.navigate(['/userdata']);
-      },
-      error => {
-        this.error =  true;
-        this.mensajeError = error;
-      }
-    );
+      .subscribe(
+        data => {
+          this.error = false;
+          this.router.navigate(['/userdata']);
+        },
+        error => {
+          this.error = true;
+          this.mensajeError = error;
+        }
+      );
   }
 }

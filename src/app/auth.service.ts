@@ -10,23 +10,23 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public login(user: string, password:string) {
+  public login(user: string, password: string) {
     const data = {
-      email:  user,
+      email: user,
       password: password
     };
     return this.httpClient.post(
       'https://reqres.in/api/login',
-       data
-      ).pipe(
-        map((token: any) => {
-          localStorage.setItem('token', token.token);
-        })
-      );
+      data
+    ).pipe(
+      map((token: any) => {
+        localStorage.setItem('token', token.token);
+      })
+    );
   }
 
   logout(): Observable<any> {
     localStorage.removeItem('token');
-    return of('');      
+    return of('');
   }
 }

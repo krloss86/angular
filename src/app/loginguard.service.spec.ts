@@ -1,12 +1,17 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { LoginguardService } from './loginguard.service';
+import { LoginGuard } from './loginguard.service';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 
-describe('LoginguardService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe('LoginGuard', () => {
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [RouterTestingModule],
+    providers: []
+  }));
 
   it('should be created', () => {
-    const service: LoginguardService = TestBed.get(LoginguardService);
+    const service: LoginGuard = TestBed.get(LoginGuard);
     expect(service).toBeTruthy();
   });
 });

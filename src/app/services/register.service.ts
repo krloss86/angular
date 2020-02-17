@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class RegisterService {
 
-  private baseUrl = environment.apiUrl;
+  private baseUrl = environment.restUrl;
   private registerEndPointRest = 'user';
 
   constructor(

@@ -3,24 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserdataComponent } from './userdata/userdata.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { BaseserviceComponent } from './baseservice/baseservice.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     UserComponent,
     UserdataComponent,
     NotfoundComponent,
-    BaseserviceComponent
   ],
   imports: [
     BrowserModule,

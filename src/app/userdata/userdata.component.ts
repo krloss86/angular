@@ -14,22 +14,22 @@ export class UserdataComponent implements OnInit {
   user: any;
 
   constructor(
-      private auth: AuthService,      
-      private router: Router,
-      private restService: PeticionerestService
-      ) { }
+    private auth: AuthService,
+    private router: Router,
+    private restService: PeticionerestService
+  ) { }
 
   ngOnInit() {
   }
 
   logout(): void {
     this.auth.logout().subscribe(
-      data=> this.router.navigate(['/user']),
-      error=> {alert('Error en logout')}
+      data => this.router.navigate(['/user']),
+      error => { alert('Error en logout'); }
     );
   }
 
-  getUserData(){
+  getUserData() {
 
     this.restService.getUserById(2).subscribe(data => this.user = data);
   }
